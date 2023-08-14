@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\{
     DashboardController
 };
@@ -16,12 +17,14 @@ use App\Http\Controllers\{
 |
 */
 
-Route::get('/', function () {
-    return view('app');
-});
+
 
 Route::get('/dashboard', function () {
     return view('file/dashboard');
 });
 
+Route::get('/session', [SessionController::class, 'index']);
 
+Route::get('/', [PageController::class, 'index']);
+Route::get('/about', [PageController::class, 'about']);
+Route::get('/contact', [PageController::class, 'contact']);
